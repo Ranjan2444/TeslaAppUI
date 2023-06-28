@@ -8,7 +8,7 @@ const Button = (props) => {
 
     const { type, content, onPress } = props
 
-    const backgroundColor = type === 'primary' ? '#28282BF' : 'white'
+    const backgroundColor = type === 'primary' ? '#36454F' : 'white'
     const textColor = type === 'primary' ? 'white' : 'black'
     return (
         <View style={{ width: '100%', padding: 10 }}>

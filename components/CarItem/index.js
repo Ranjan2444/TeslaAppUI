@@ -1,12 +1,15 @@
-import { View, Text, ImageBackground } from 'react-native'
+import { View, Text, ImageBackground, Dimensions } from 'react-native'
 import React from 'react'
 import Button from '../Button'
 
 const CarItem = (props) => {
+    const { name, tagLine, tagLineCTA, image } = props.car
     return (
-        <View style={{ width: '100%', height: '100%' }}>
+        <View
+            style={{ width: '100%', height: Dimensions.get('window').height }}
+        >
             <ImageBackground
-                source={require('../../assets/images/ModelS.jpeg')}
+                source={image}
                 style={{
                     width: '100%',
                     height: '100%',
@@ -22,25 +25,36 @@ const CarItem = (props) => {
                     alignItems: 'center',
                 }}
             >
-                <Text style={{ fontSize: 40, fontWeight: '500' }}>Model S</Text>
+                <Text style={{ fontSize: 40, fontWeight: '500' }}>{name}</Text>
                 <Text style={{ fontSize: 16, color: 'gray' }}>
-                    Starting at $69,422
+                    {tagLine}{' '}
+                    <Text
+                        style={{
+                            fontSize: 16,
+                            textDecorationLine: 'underline',
+                            color: 'gray',
+                        }}
+                    >
+                        {tagLineCTA}
+                    </Text>
                 </Text>
             </View>
-            <Button
-                type="primary"
-                content={'Custom Order'}
-                onPress={() => {
-                    console.warn('Custom Order')
-                }}
-            />
-            <Button
-                type="secondary"
-                content={'Existing Inventory'}
-                onPress={() => {
-                    console.warn('Existing Inventory')
-                }}
-            />
+            <View style={{ position: 'absolute', bottom: 50, width: '100%' }}>
+                <Button
+                    type="primary"
+                    content={'Custom Order'}
+                    onPress={() => {
+                        console.warn('Custom Order')
+                    }}
+                />
+                <Button
+                    type="secondary"
+                    content={'Existing Inventory'}
+                    onPress={() => {
+                        console.warn('Existing Inventory')
+                    }}
+                />
+            </View>
         </View>
     )
 }
